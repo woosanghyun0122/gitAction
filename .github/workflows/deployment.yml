@@ -46,18 +46,17 @@ jobs:
       needs: build
 
       steps:
-        - name: SSH to EC2
+        - name: SSH to EC2 and Deploy
           uses: appleboy/ssh-action@v0.1.6
           with:
             host: ${{ secrets.EC2_IP }}
             username: ubuntu
             key: ${{ secrets.EC2_KEY }}
             port: 22
-
-        - name: EC2 deployment
-          run: |
+            script: |
+              cd /home/ubuntu/test  # 프로젝트 폴더로 이동
               sudo docker compose down -v
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/ci_cd:v1
               sudo docker compose up -d --build
-            EOF
+              
       
