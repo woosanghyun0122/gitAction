@@ -23,7 +23,6 @@ public class MemberController {
         log.info("Controller Start!!");
         List<Member> list = service.findAll();
         model.addAttribute("list", list);
-        log.info("Controller end!!");
         return "member/list";
     }
 
