@@ -46,11 +46,14 @@ jobs:
       needs: build
 
       steps:
-        - name: SSH to EC2 and deploy
+        - name: SSH to EC2
+          uses: appleboy/ssh-action@v0.1.6
           with:
             host: ${{ secrets.EC2_IP }}
             username: ubuntu
             key: ${{ secrets.EC2_KEY }}
+
+        - name: EC2 deployment
           run: |
               sudo docker compose down -v
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/ci_cd:v1
