@@ -55,6 +55,7 @@ jobs:
             port: 22
             script: |
               cd /home/ubuntu/test  # 프로젝트 폴더로 이동
+              sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN_KEY }}
               sudo docker compose down -v
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/ci_cd:v1
               sudo docker compose up -d --build
