@@ -37,7 +37,7 @@ jobs:
       - name: Build and Push Docker image
         run: |
           sudo docker build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/ci_cd:v1 .
-          sudo docker push ${{ secrets.DOCKER_USERNAME }}/cicd_test:v1
+          sudo docker push ${{ secrets.DOCKER_USERNAME }}/ci_cd:v1
 
   deploy:
       runs-on: ubuntu-22.04
