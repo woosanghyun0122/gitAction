@@ -8,4 +8,4 @@ WORKDIR /app
 COPY build/libs/*.jar /app/app.jar
 
 # 4. 컨테이너가 실행될 때 JAR 파일 실행
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+CMD ["java", "-jar", "/app/app.jar"]
